@@ -14,14 +14,10 @@ const newGameButton = select('.new-game');
 const text = select('.text');
 let deck = new Deck();
 deck.shuffle();
-// console.log(deck.cards[0]);
+
 console.log(deck.cards[0].suit);
 
 let score = 0;
-
-// function refreshPage() {
-//   window.location.reload();
-// }
 
 function updateDeckCount() {
   computerDeckElement.innerText = deck.numberOfCards;
@@ -30,7 +26,6 @@ function updateDeckCount() {
 function cleanBeforeRound() {
   computerCardSlot.innerHTML = '';
   text.innerText = '';
-
   updateDeckCount();
 }
 
@@ -38,100 +33,84 @@ function startGame() {
   deck = new Deck();
   deck.shuffle();
   score = 0;
-  console.log(deck.cards[0]);
   cleanBeforeRound();
+  console.log(deck.cards[0]);
 }
 
 const diamondCall = () => {
-  if (deck.cards === undefined || deck.cards.length === 0) {
+  const computerCard = deck.pop();
+  if (deck.numberOfCards === 0) {
     startGame();
   }
-  if (deck.cards[0].suit === '♦') {
-    // console.log('You won!');
+  if (computerCard.suit === '♦') {
     cleanBeforeRound();
     score += 4;
     text.innerText = `You won! Score:${score}`;
-    const computerCard = deck.pop();
     computerCardSlot.appendChild(computerCard.getHTML());
-    console.log(deck.cards[0].suit);
   } else {
-    // console.log('You lost!');
     cleanBeforeRound();
     score -= 1;
     text.innerText = `You lost! Score:${score}`;
-    const computerCard = deck.pop();
     computerCardSlot.appendChild(computerCard.getHTML());
-    console.log(deck.cards[0].suit);
   }
+  console.log(deck.cards[0].suit);
 };
 
 const heartCall = () => {
-  if (deck.cards === undefined || deck.cards.length === 0) {
+  const computerCard = deck.pop();
+  if (deck.numberOfCards === 0) {
     startGame();
   }
-  if (deck.cards[0].suit === '♥') {
-    // console.log('You won!');
+  if (computerCard.suit === '♥') {
     cleanBeforeRound();
     score += 4;
     text.innerText = `You won! Score:${score}`;
-    const computerCard = deck.pop();
     computerCardSlot.appendChild(computerCard.getHTML());
-    console.log(deck.cards[0].suit);
   } else {
-    // console.log('You lost!');
     cleanBeforeRound();
     score -= 1;
     text.innerText = `You lost! Score:${score}`;
-    const computerCard = deck.pop();
     computerCardSlot.appendChild(computerCard.getHTML());
-    console.log(deck.cards[0].suit);
   }
+  console.log(deck.cards[0].suit);
 };
 
 const spadeCall = () => {
-  if (deck.cards === undefined || deck.cards.length === 0) {
+  const computerCard = deck.pop();
+  if (deck.numberOfCards === 0) {
     startGame();
   }
-  if (deck.cards[0].suit === '♠') {
-    // console.log('You won!');
+  if (computerCard.suit === '♠') {
     cleanBeforeRound();
     score += 4;
     text.innerText = `You won! Score:${score}`;
-    const computerCard = deck.pop();
     computerCardSlot.appendChild(computerCard.getHTML());
-    console.log(deck.cards[0].suit);
   } else {
-    // console.log('You lost!');
     cleanBeforeRound();
     score -= 1;
     text.innerText = `You lost! Score:${score}`;
-    const computerCard = deck.pop();
     computerCardSlot.appendChild(computerCard.getHTML());
-    console.log(deck.cards[0].suit);
   }
+  console.log(deck.cards[0].suit);
 };
 
 const clubCall = () => {
-  if (deck.cards === undefined || deck.cards.length === 0) {
+  const computerCard = deck.pop();
+  if (deck.numberOfCards === 0) {
     startGame();
   }
-  if (deck.cards[0].suit === '♣') {
-    // console.log('You won!');
+  if (computerCard.suit === '♣') {
     cleanBeforeRound();
     score += 4;
     text.innerText = `You won! Score:${score}`;
-    const computerCard = deck.pop();
     computerCardSlot.appendChild(computerCard.getHTML());
-    console.log(deck.cards[0].suit);
   } else {
-    // console.log('You lost!');
     cleanBeforeRound();
     score -= 1;
     text.innerText = `You lost! Score:${score}`;
-    const computerCard = deck.pop();
     computerCardSlot.appendChild(computerCard.getHTML());
-    console.log(deck.cards[0].suit);
   }
+  console.log(deck.cards[0].suit);
 };
 
 listen(diamondButton, 'click', diamondCall);
